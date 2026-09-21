@@ -1,0 +1,84 @@
+AIM: A csv contain fields with the elements : admission no, name and percentage. Write a python program to call the following user defined functions:
+1.add() : To add records
+2.search() : To display the records of a student where % is more than 75%.
+
+
+
+
+PROCEDURE:
+
+
+
+import csv
+
+def add():
+    f = open("stud.csv", 'a')
+    admno = input("Enter admno: ")
+    name = input("Enter name: ")
+    per = int(input("Enter percentage: "))
+    wobj = csv.writer(f)
+    wobj.writerow([admno, name, per])
+    f.close()
+
+def search():
+    f = open("stud.csv", 'r')
+    found = 0
+    robj = csv.reader(f)
+    for rec in robj:
+        if robj.line_num == 1:
+            continue
+        elif int(rec[2]) > 75:
+            print(rec[0], rec[1], rec[2])
+            found += 1
+            
+    if found == 0:
+        print("No student with % > 75 ")
+    f.close()
+
+# Main Program
+ch = 'y'
+while ch.lower() == 'y':
+    print("\n1: ADD RECORD")
+    print("2: SEARCH (Percentage > 75)")
+    choice = int(input("Enter your choice (1/2): "))
+    
+    if choice == 1:
+        add()
+    elif choice == 2:
+        search()
+    else:
+        print("Invalid choice, try again.")
+        
+    ch = input("Do you want to continue (y/n)? ")
+
+
+
+OUTPUT
+
+
+
+
+1: ADD RECORD
+2: SEARCH (Percentage > 75)
+Enter your choice (1/2): 1
+Enter admno: 101
+Enter name: Alice
+Enter percentage: 82
+Do you want to continue (y/n)? y
+
+1: ADD RECORD
+2: SEARCH (Percentage > 75)
+Enter your choice (1/2): 1
+Enter admno: 102
+Enter name: Bob
+Enter percentage: 68
+Do you want to continue (y/n)? y
+
+1: ADD RECORD
+2: SEARCH (Percentage > 75)
+Enter your choice (1/2): 2
+101 Alice 82
+Do you want to continue (y/n)? n
+
+
+
