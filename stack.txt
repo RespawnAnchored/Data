@@ -55,3 +55,72 @@ while ch.lower()=='y':
     else:
         print("Invalid choice, Try again")
     ch=input("Do you want to perform another operation (y/n)")
+
+
+
+
+
+OUTPUT
+
+
+Performing Stack operation using list
+
+1:PUSH
+2:POP
+3:PEEK
+4:DISPLAY
+
+Enter your choice: 1
+Enter Doctor ID: 101
+Enter the name of the Doctor: Dr. Smith
+Enter Mobile number of the doctor: 9876543210
+Enter the Specialization: ENT
+Do you want to perform another operation (y/n): y
+
+1:PUSH
+2:POP
+3:PEEK
+4:DISPLAY
+
+Enter your choice: 1
+Enter Doctor ID: 102
+Enter the name of the Doctor: Dr. Adams
+Enter Mobile number of the doctor: 9123456789
+Enter the Specialization: Cardiology
+Do you want to perform another operation (y/n): y
+
+1:PUSH
+2:POP
+3:PEEK
+4:DISPLAY
+
+Enter your choice: 4
+[101, 'Dr. Smith']
+Do you want to perform another operation (y/n): y
+
+1:PUSH
+2:POP
+3:PEEK
+4:DISPLAY
+
+Enter your choice: 3
+The top of the stack is [101, 'Dr. Smith']
+Do you want to perform another operation (y/n): y
+
+1:PUSH
+2:POP
+3:PEEK
+4:DISPLAY
+
+Enter your choice: 2
+The deleted doctor detail is [101, 'Dr. Smith']
+Do you want to perform another operation (y/n): y
+
+1:PUSH
+2:POP
+3:PEEK
+4:DISPLAY
+
+Enter your choice: 4
+Underflow
+Do you want to perform another operation (y/n): n
