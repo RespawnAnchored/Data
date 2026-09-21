@@ -1,0 +1,96 @@
+ORDERS CSV
+
+AIM:
+A CSV file orders.csv contains records of customer order structure: [Orderid, Custid, Orderdate, Totalamt, Orderstatus]. Write a Python program to perform the following tasks:
+a) Addorder()
+b) Recentorders()
+
+
+
+PROCEDURE:
+
+
+
+import csv
+
+def Addorder():
+    f = open("orders.csv", 'a', newline='')
+    wobj = csv.writer(f)
+    while True:
+        orderid = int(input("Enter order id: "))
+        custid = input("Enter customer id: ")
+        orderdate = input("Enter date: ")
+        Tamt = int(input("Enter total amount: "))
+        status = input("Enter status: ")
+        
+        rec = [orderid, custid, orderdate, Tamt, status]
+        wobj.writerow(rec)
+        
+        ch = input("Do you want to continue (y/n)?: ")
+        if ch.lower() == 'n':
+            break
+    f.close()
+
+def Recentorders():
+    f = open("orders.csv", 'r', newline='')
+    robj = csv.reader(f)
+    found = False
+    for rec in robj:
+        if robj.line_num == 1:
+            continue
+        elif rec[2][-4:] == '2024':
+            found = True
+            print(rec[0], rec[3])
+            
+    if not found:
+        print("Not found")
+    f.close()
+
+# Main Program
+ch = 'y'
+while ch.lower() == 'y':
+    print("\n1: ADD ORDER")
+    print("2: RECENT ORDERS (Year 2024)")
+    choice = int(input("Enter your choice (1/2): "))
+    
+    if choice == 1:
+        Addorder()
+    elif choice == 2:
+        Recentorders()
+    else:
+        print("Invalid choice, try again.")
+        
+    ch = input("Do you want to continue (y/n)? ")
+
+
+
+
+
+
+OUTPUT
+
+
+
+
+1: ADD ORDER
+2: RECENT ORDERS (Year 2024)
+Enter your choice (1/2): 1
+Enter order id: 501
+Enter customer id: C101
+Enter date: 15/03/2024
+Enter total amount: 1500
+Enter status: Delivered
+Do you want to continue (y/n)?: y
+Enter order id: 502
+Enter customer id: C102
+Enter date: 20/01/2023
+Enter total amount: 2200
+Enter status: Shipped
+Do you want to continue (y/n)?: n
+Do you want to continue (y/n)? y
+
+1: ADD ORDER
+2: RECENT ORDERS (Year 2024)
+Enter your choice (1/2): 2
+501 1500
+Do you want to continue (y/n)? n
