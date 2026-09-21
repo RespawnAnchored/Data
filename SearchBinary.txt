@@ -1,0 +1,117 @@
+SEARCH - BINARY FILE
+
+AIM:
+Create a binary file with name and rollno. Search for a given rollno and display the name, if not found display appropriate message.
+
+
+
+PROCEDURE:
+
+
+
+import pickle
+
+def creating():
+    f = open("e:\\student2026.dat", 'ab')
+    record = []
+    while True:
+        roll = int(input("Enter student roll no: "))
+        name = input("Enter the student name: ")
+        data = [roll, name]
+        record.append(data)
+        choice = input("Wish to enter more records (Y/n)?: ")
+        if choice.lower() == 'n':
+            break
+    pickle.dump(record, f)
+    print("Record Added")
+    f.close()
+
+def searching(rno):
+    f = open("e:\\student2026.dat", 'rb')
+    record = pickle.load(f)
+    found = 0
+    for rec in record:
+        if rec[0] == rno:
+            print("Successful search. Found")
+            print(rec[0], rec[1])
+            found = 1
+            break
+            
+    if found == 0:
+        print("Record not found")
+    f.close()
+
+# Main Program
+ch = 'y'
+while ch == 'y':
+    print("MENU")
+    print("1: CREATE")
+    print("2: SEARCH")
+    choice = int(input("Enter your choice: "))
+    if choice == 1:
+        creating()
+    elif choice == 2:
+        rno = int(input("Enter rollno to search: "))
+        searching(rno)
+    else:
+        print("Invalid choice")
+    ch = input("Do you want to continue or not: ")
+
+
+
+
+
+
+OUTPUT
+
+
+
+
+
+import pickle
+
+def creating():
+    f = open("e:\\student2026.dat", 'ab')
+    record = []
+    while True:
+        roll = int(input("Enter student roll no: "))
+        name = input("Enter the student name: ")
+        data = [roll, name]
+        record.append(data)
+        choice = input("Wish to enter more records (Y/n)?: ")
+        if choice.lower() == 'n':
+            break
+    pickle.dump(record, f)
+    print("Record Added")
+    f.close()
+
+def searching(rno):
+    f = open("e:\\student2026.dat", 'rb')
+    record = pickle.load(f)
+    found = 0
+    for rec in record:
+        if rec[0] == rno:
+            print("Successful search. Found")
+            print(rec[0], rec[1])
+            found = 1
+            break
+            
+    if found == 0:
+        print("Record not found")
+    f.close()
+
+# Main Program
+ch = 'y'
+while ch == 'y':
+    print("MENU")
+    print("1: CREATE")
+    print("2: SEARCH")
+    choice = int(input("Enter your choice: "))
+    if choice == 1:
+        creating()
+    elif choice == 2:
+        rno = int(input("Enter rollno to search: "))
+        searching(rno)
+    else:
+        print("Invalid choice")
+    ch = input("Do you want to continue or not: ")
