@@ -1,0 +1,124 @@
+UPDATE BINARY FILE
+
+AIM:
+Create a binary file studentdts.dat with rollno, name and marks. Input a rollno and update the marks.
+
+
+
+
+
+
+PROCEDURE:
+
+
+
+import pickle
+
+def creating():
+    f = open("e:\\studentdts.dat", 'ab')
+    record = []
+    while True:
+        roll = int(input("Enter student roll no: "))
+        name = input("Enter student Name: ")
+        marks = float(input("Enter Marks: "))
+        data = [roll, name, marks]
+        record.append(data)
+        choice = input("Wish to add more records? ")
+        if choice.upper() == 'N':
+            break
+    pickle.dump(record, f)
+    print("Record Added")
+    f.close()
+
+def updating(rno):
+    f = open("e:\\studentdts.dat", 'rb+')
+    record = pickle.load(f)
+    found = False
+    for rec in record:
+        if rec[0] == rno:
+            print("Current Mark is: ", rec[2])
+            rec[2] = float(input("New Mark: "))
+            found = True
+            break
+            
+    if found:
+        f.seek(0)
+        pickle.dump(record, f)
+        print("Mark Updated")
+    f.close()
+
+def display():
+    f = open("e:\\studentdts.dat", 'rb+')
+    record = pickle.load(f)
+    for rec in record:
+        print(rec)
+    f.close()
+
+# Main Program
+ch = 'y'
+while ch == 'y':
+    print("MENU")
+    print("1: create")
+    print("2: update")
+    print("3: display")
+    choice = int(input("Enter your choice: "))
+    if choice == 1:
+        creating()
+    elif choice == 2:
+        rno = int(input("Enter roll number to search: "))
+        updating(rno)
+    elif choice == 3:
+        display()
+    else:
+        print("Invalid choice")
+    ch = input("Do you want to continue or not: ")
+
+
+
+OUTPUT
+
+
+
+
+
+MENU
+1: create
+2: update
+3: display
+Enter your choice: 1
+Enter student roll no: 101
+Enter student Name: Rahul
+Enter Marks: 85.5
+Wish to add more records? y
+Enter student roll no: 102
+Enter student Name: Anita
+Enter Marks: 91.0
+Wish to add more records? N
+Record Added
+Do you want to continue or not: y
+MENU
+1: create
+2: update
+3: display
+Enter your choice: 3
+[101, 'Rahul', 85.5]
+[102, 'Anita', 91.0]
+Do you want to continue or not: y
+MENU
+1: create
+2: update
+3: display
+Enter your choice: 2
+Enter roll number to search: 101
+Current Mark is:  85.5
+New Mark: 95.0
+Mark Updated
+Do you want to continue or not: y
+MENU
+1: create
+2: update
+3: display
+Enter your choice: 3
+[101, 'Rahul', 95.0]
+[102, 'Anita', 91.0]
+Do you want to continue or not: n
