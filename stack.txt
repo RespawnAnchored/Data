@@ -1,0 +1,57 @@
+To write a Python program to implement Stack using a list data-structure, to perform the following operations:
+(i) To Push an object containing Doc_ID and Doc_name of doctors who specialize in "ENT" to the stack.
+(ii) To Pop the objects from the stack and display them.
+(iii) To display the elements of the stack (after performing PUSH or POP)
+(iv) To display top most item of the stack
+PROCEDURE:
+
+def pushitem():
+    doc_id=int(input("Enter Doctor ID"))
+    doc_name=input("Enter the name of the Doctor")
+    mob=int(input("Enter Mobile number of the doctor"))
+    special=input("Enter the Specialization")
+    if special.upper()=='ENT':
+        item=[doc_id,doc_name]
+        st.append(item)
+
+def popitem():
+    if st==[]:
+        print("Underflow")
+    else:
+        print("The deleted doctor detail is",st.pop())
+
+def peekitem():
+    if st==[]:
+        print("Underflow")
+    else:
+        top=len(st)-1
+        print("The top of the stack is",st[top])
+
+def display():
+    if st==[]:
+        print("Underflow")
+    else:
+        top=len(st)-1
+        for i in range(top,-1,-1):
+            print(st[i])
+
+#main
+st=[]
+ch='y'
+print("Performing Stack operation using list\n")
+while ch.lower()=='y':
+    print()
+    print("1:PUSH", "2:POP", "3:PEEK", "4:DISPLAY", sep='\n')
+    print()
+    choice=int(input("Enter your choice"))
+    if choice==1:
+        pushitem()
+    elif choice==2:
+        popitem()
+    elif choice==3:
+        peekitem()
+    elif choice==4:
+        display()
+    else:
+        print("Invalid choice, Try again")
+    ch=input("Do you want to perform another operation (y/n)")
